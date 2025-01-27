@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/data/notifiers.dart';
 import 'package:flutter_application/views/widget_tree.dart';
 
 void main() {
@@ -10,21 +11,30 @@ class MyApp extends StatefulWidget{
 
   @override
   State<MyApp> createState() => _MyAppState();
+
   
 }
+
+
 
 class _MyAppState extends State<MyApp>{
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context){
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.teal,
-          brightness: Brightness.dark),
-      ),
-      home: WidgetTree()
+    return ValueListenableBuilder(
+      valueListenable: darkModeSelectNotifier, 
+      builder: (context, darkmodeSelector, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.teal,
+              brightness: darkmodeSelector? Brightness.light : Brightness.dark),
+          ),
+          home: WidgetTree(),
+        );
+      },
     );
   }
 }
+
