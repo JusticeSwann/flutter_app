@@ -22,7 +22,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget{
               onPressed: () {
                 darkModeSelectNotifier.value = !darkModeSelecter;
               }, 
-              icon: brightnessMode[darkModeSelecter ? 0:1]
+              icon: brightnessMode[darkModeSelecter ? 1:0]
             )
           ],
         );
