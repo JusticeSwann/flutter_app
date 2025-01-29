@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/data/notifiers.dart';
+import 'package:flutter_application/views/pages/settings_page.dart';
 import 'package:flutter_application/views/widget_tree.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget{
@@ -14,9 +15,21 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget{
       valueListenable: darkModeSelectNotifier, 
       builder: (context, darkModeSelecter, child) {
         return AppBar(
-          title: const Text('Flutter_Map'),
-          centerTitle: true,
+          title: const Text('Not Justice App'),
+          centerTitle: false,
           actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return SettingsPage(title: 'Settings',);
+                    },
+                  )
+                );
+              }, 
+              icon: Icon(Icons.settings)),
             IconButton(
               isSelected: darkModeSelecter,
               onPressed: () {
