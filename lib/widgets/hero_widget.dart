@@ -1,21 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/views/widget_tree.dart';
 
 class HeroWidget extends StatelessWidget{
-  const HeroWidget({super.key});
+  const HeroWidget(
+    {
+      super.key,
+      required this.title
+    }
+  );
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
-    return Hero(
-      tag: 'hero1', 
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Image.asset(
-          'assets/images/bg.jpeg',
-          color: Colors.teal,
-          colorBlendMode: BlendMode.darken,
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Hero(
+          tag: 'hero1', 
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image(
+              image: AssetImage('assets/images/bg.jpeg'),
+              color: Colors.teal,
+              colorBlendMode: BlendMode.darken,
+            )
+          )
         ),
-      )
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 50,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 20,
+            color: Colors.white54,
+          )
+        )
+      ],
     );
   }
 }
