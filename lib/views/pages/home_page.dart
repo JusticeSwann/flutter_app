@@ -7,36 +7,38 @@ class HomePage extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(20),
-      child: Column(
-        children: [
-          HeroWidget(title: 'Home'),
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 10),
-            child: Card(
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'This is card content',
-                      style: KTextStyle.titleTealText,
-                    ),
-                    Text(
-                      'This is more card content',
-                      style: KTextStyle.descriptionText,
-                    )
-                  ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          children: [
+            HeroWidget(title: 'Home'),
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: Card(
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'This is card content',
+                        style: KTextStyle.titleTealText,
+                      ),
+                      Text(
+                        'This is more card content',
+                        style: KTextStyle.descriptionText,
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-          )
-        ],
-      )
+            )
+          ],
+        )
+      ),
     );
   }
 }

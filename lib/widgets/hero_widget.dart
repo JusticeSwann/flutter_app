@@ -20,7 +20,7 @@ class HeroWidget extends StatelessWidget{
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Image(
-              image: AssetImage('assets/images/bg.jpeg'),
+              image: AssetImage('assets/images/bg.jpg'),
               color: Colors.teal,
               colorBlendMode: BlendMode.darken,
             )
@@ -30,7 +30,7 @@ class HeroWidget extends StatelessWidget{
           title,
           style: TextStyle(
             fontSize: 50,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.normal,
             letterSpacing: 20,
             color: Colors.white54,
           )
