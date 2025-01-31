@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/data/notifiers.dart';
+import 'package:flutter_application/data/prefs.dart';
 import 'package:flutter_application/views/pages/settings_page.dart';
 import 'package:flutter_application/views/widget_tree.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget{
   const AppBarWidget({super.key});
@@ -32,8 +34,11 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget{
               icon: Icon(Icons.settings)),
             IconButton(
               isSelected: darkModeSelecter,
-              onPressed: () {
+              onPressed: () async {
                 darkModeSelectNotifier.value = !darkModeSelecter;
+                final SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.setBool(KConstants.themeModeKey,darkModeSelectNotifier.value);
+                
               }, 
               icon: brightnessMode[darkModeSelecter ? 1:0]
             )

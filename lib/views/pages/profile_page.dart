@@ -13,7 +13,6 @@ class ProfilePage extends StatelessWidget{
           ListTile(
               title: Text('Logout'),
               onTap: () {
-                
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) {

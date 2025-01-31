@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/data/constants.dart';
+import 'package:flutter_application/data/styles.dart';
 import 'package:flutter_application/widgets/hero_widget.dart';
 
 class HomePage extends StatelessWidget{

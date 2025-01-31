@@ -18,8 +18,8 @@ class LoginPage extends StatefulWidget{
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController  emailController = TextEditingController();
-  TextEditingController  passwordController = TextEditingController();
+  TextEditingController  emailController = TextEditingController(text: '123');
+  TextEditingController  passwordController = TextEditingController(text: '456');
 
   @override
   void dispose() {
@@ -94,13 +94,14 @@ class _LoginPageState extends State<LoginPage> {
   }
   void onLoginPress(){
     if (emailController.text == email && passwordController.text == password){
-      Navigator.pushReplacement(
+      Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
           builder: (context) {
             return WidgetTree();
           },
-        )
+        ),
+        (route) => false,
       );
     }
   }
