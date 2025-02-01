@@ -26,7 +26,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget{
                   context, 
                   MaterialPageRoute(
                     builder: (context) {
-                      return SettingsPage(title: 'Settings',);
+                      return SettingsPage(title: 'Settings');
                     },
                   )
                 );
@@ -37,7 +37,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget{
               onPressed: () async {
                 darkModeSelectNotifier.value = !darkModeSelecter;
                 final SharedPreferences prefs = await SharedPreferences.getInstance();
-                await prefs.setBool(KConstants.themeModeKey,darkModeSelectNotifier.value);
+                await prefs.setBool(PrefKeys.themeModeKey,darkModeSelectNotifier.value);
                 
               }, 
               icon: brightnessMode[darkModeSelecter ? 1:0]
