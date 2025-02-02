@@ -9,43 +9,51 @@ class OnboardingPage extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Lottie.asset('assets/lottie/Animation - 1738250588952.json'),
-                SizedBox(
-                  height: 50,
-                ),
-                Text(
-                  'Flutter Mapp is the best method to learn flutter around!!!',
-                  textAlign: TextAlign.justify,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context, MaterialPageRoute(
-                        builder: (context) {
-                          return LoginPage(title: 'Register');
+            child: LayoutBuilder(
+              builder: (context, BoxConstraints constraints) {
+                return FractionallySizedBox(
+                  widthFactor: screenWidth > 500 ? 0.5 : 1.0,
+                  child: Column(
+                    children: [
+                      Lottie.asset('assets/lottie/Animation - 1738250588952.json'),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Text(
+                        'Flutter Mapp is the best method to learn flutter around!!!',
+                        textAlign: TextAlign.justify,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context, MaterialPageRoute(
+                              builder: (context) {
+                                return LoginPage(title: 'Register');
+                              },
+                            )
+                          );
                         },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(double.infinity, 60.0),
+                        ),
+                          
+                        child: Text('Next')
                       )
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 60.0),
+                    ],
                   ),
-                     
-                  child: Text('Next')
-                )
-              ],
-            ),
+                );
+              },
+            )
           ),
         ),
       ),

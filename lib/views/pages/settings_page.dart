@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/views/pages/expand_demo_page.dart';
 
 class SettingsPage extends StatefulWidget{
   const SettingsPage({
@@ -47,6 +48,18 @@ class _SettingsPageState extends State<SettingsPage> {
                   );
                 }, 
                 child: Text('Open SnackBar')
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return ExpandDemoPage();
+                      },)
+                  );
+                }, 
+                child: Text('Expanded Widget Demo')
               ),
               ElevatedButton(
                 onPressed: () {

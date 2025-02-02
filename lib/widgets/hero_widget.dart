@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/views/pages/settings_page.dart';
 
 class HeroWidget extends StatelessWidget{
   const HeroWidget(
@@ -23,7 +22,8 @@ class HeroWidget extends StatelessWidget{
           MaterialPageRoute(
             builder: (context) {
               return nextPage!;
-            },)
+            },
+          ),
         );
       }
       : null,
@@ -32,13 +32,17 @@ class HeroWidget extends StatelessWidget{
         children: [
           Hero(
             tag: 'hero1', 
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image(
-                image: AssetImage('assets/images/bg.jpg'),
-                color: Colors.teal,
-                colorBlendMode: BlendMode.darken,
-              )
+            child: AspectRatio(
+              aspectRatio: 1920/1080,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  'assets/images/bg.jpg',
+                  color: Colors.teal,
+                  colorBlendMode: BlendMode.darken,
+                  fit: BoxFit.cover,
+                )
+              ),
             )
           ),
           Text(

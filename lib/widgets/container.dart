@@ -21,7 +21,7 @@ class ContainerWidget extends StatelessWidget{
 
     return  Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 10),
+      padding: EdgeInsets.symmetric(vertical: 0),
       child: Card(
         child: Padding(
           padding: EdgeInsets.all(20),
