@@ -1,10 +1,11 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/data/constants.dart';
 import 'package:flutter_application/views/pages/course_page.dart';
 import 'package:flutter_application/widgets/container.dart';
 import 'package:flutter_application/widgets/hero_widget.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert' as convert;
+
 
 
 class HomePage extends StatefulWidget{
@@ -17,6 +18,7 @@ class HomePage extends StatefulWidget{
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
+    print('running init state');
     getData();
     super.initState();
   }
@@ -24,7 +26,17 @@ class _HomePageState extends State<HomePage> {
   void getData() async{
     var client = http.Client();
     try {
-      print(await http.read(Uri.https('catfact.ninja', 'fact')));
+      var url = Uri.https('catfact.ninja', '/fact');
+      var response = await http.get(url);
+      print(response.statusCode);
+      if (response.statusCode == 200){
+        var jsonResponse = convert.jsonDecode(response.body) as Map<String,dynamic>;
+        var itemCount = jsonResponse.length;
+        print(jsonResponse['fact']);
+      } else {
+        print('request failed with error code: ${response.statusCode}.');
+      }
+
     } finally {
       client.close();
 }
@@ -32,6 +44,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print('welcome to the home page');
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
